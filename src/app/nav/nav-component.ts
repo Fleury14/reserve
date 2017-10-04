@@ -25,6 +25,16 @@ export class NavComponent {
                 name: 'garbage',
                 display: 'Garbage Component',
                 url: 'garbage'
+            },
+            {
+                name: 'smellygarbage',
+                display: 'Smelly Garbage',
+                url: 'garbage/smelly'
+            },
+            {
+                name: 'notsmellygarbage',
+                display: 'Not So Smelly Garbage',
+                url: 'garbage/notsosmelly'
             }
         ];
         console.log(this.navArr);
