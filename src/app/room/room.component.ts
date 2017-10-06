@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-    selector: 'app-garbage',
-    templateUrl: './garbage.html'
+    selector: 'app-room',
+    templateUrl: './room.html'
 })
 
-export class GarbageComponent implements OnInit {
+export class RoomComponent implements OnInit {
 
     private thisId: string;
 

@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RootComponent } from './app-component';
 import { NavComponent } from './nav/nav-component';
 import { AppRoutingModule, routingComponents } from './app.routing.module';
+import { LoginComponent } from './login/login.component';
+
+import { LoginService } from './services/login.service';
 // import { WhateverComponent } from './whatever/whatever-component';
 // import { GarbageComponent } from './garbage/garbage-component';
 
@@ -17,8 +20,9 @@ import { AppRoutingModule, routingComponents } from './app.routing.module';
 // }];
 
 @NgModule({
-    declarations: [ RootComponent, NavComponent, routingComponents],
+    declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent],
     imports: [ BrowserModule, AppRoutingModule ],
+    providers: [ LoginService ],
     bootstrap: [ RootComponent ]
 })
 

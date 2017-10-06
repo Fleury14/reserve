@@ -4,18 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 // import { RootComponent } from './app-component';
 // import { NavComponent } from './nav/nav-component';
-import { WhateverComponent } from './whatever/whatever-component';
-import { GarbageComponent } from './garbage/garbage-component';
+import { LandingComponent } from './landing/landing.component';
+import { RoomComponent } from './room/room.component';
 
 const appRoute: Routes = [{
-    path: 'garbage',
-    component: GarbageComponent
+    path: 'landing',
+    component: LandingComponent
 }, {
-    path: 'whatever',
-    component: WhateverComponent
+    path: 'room',
+    component: RoomComponent
 }, {
-    path: 'garbage/:id',
-    component: GarbageComponent
+    path: 'room/:id',
+    component: RoomComponent
 }
 
 ];
@@ -29,4 +29,4 @@ export class AppRoutingModule {
 
  }
 
-export const routingComponents = [WhateverComponent, GarbageComponent];
+export const routingComponents = [LandingComponent, RoomComponent];
