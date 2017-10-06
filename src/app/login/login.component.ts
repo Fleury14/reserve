@@ -9,19 +9,16 @@ import { LoginService } from './../services/login.service';
 })
 
 export class LoginComponent {
-    private isUserLoggedIn = false;
     private authProvider: string;
 
 
     public login() {
         this.loginService.login();
-        this.isUserLoggedIn = true;
         console.log('User logged in');
     }
 
     private logout() {
         this.loginService.logout();
-        this.isUserLoggedIn = false;
         console.log('User logged out');
     }
 

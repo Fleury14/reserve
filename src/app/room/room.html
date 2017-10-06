@@ -1,2 +1,4 @@
 <p>Welcome to room...</p>
 <p>ID: {{ thisId }}</p>
+<p *ngIf="userName">User is logged in as {{userName.name}}</p>
+<p *ngIf="!userName">User is NOT logged in</p>
