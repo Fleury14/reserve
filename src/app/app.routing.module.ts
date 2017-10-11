@@ -7,22 +7,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { RoomComponent } from './room/room.component';
 
+import { LoginRouterGuard } from './services/router-guard';
+
 const appRoute: Routes = [{
     path: 'landing',
     component: LandingComponent
 }, {
     path: 'room',
-    component: RoomComponent
+    component: RoomComponent,
+    canActivate: [ LoginRouterGuard ]
 }, {
     path: 'room/:id',
-    component: RoomComponent
+    component: RoomComponent,
+    canActivate: [ LoginRouterGuard ]
 }
 
 ];
 
 @NgModule({
     imports: [ RouterModule.forRoot(appRoute) ],
-    exports: [ RouterModule ]
+    exports: [ RouterModule ],
+    providers: [ LoginRouterGuard ]
+
 })
 
 export class AppRoutingModule {
