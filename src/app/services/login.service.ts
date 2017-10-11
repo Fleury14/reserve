@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 
@@ -6,7 +7,7 @@ export class LoginService {
 
     private _loggedInUser;
 
-    constructor() {
+    constructor(private router: Router) {
         this._loggedInUser = null;
     }
 
@@ -18,6 +19,11 @@ export class LoginService {
 
     public logout() {
         this._loggedInUser = null;
+        console.log(this.router.url);
+        if (this.router.url.includes('/room')) {
+            this.router.navigateByUrl('landing');
+        }
+
     }
 
     public getLoggedInUser() {
