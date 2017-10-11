@@ -1,0 +1,21 @@
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    <div class="button-box"><span *ngIf="userName" class="provider">{{ userName.name }}</span></div>
+  </li>
+  <li><div class="button-box"><span *ngIf="authProvider !== undefined" class="provider">{{ authProvider }}</span></div> </li>
+    
+  <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Provider <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      <li (click)="dropdownGithub()">Github</li>
+      <li (click)="dropdownGoogle()">Google</li>
+      
+      </ul> <!-- end dropdown menu -->
+  </li>
+  <li>
+    <div class="button-box">
+      <button class="btn btn-success log-button" [disabled]="userName" (click)="login()">Login</button>
+      <button class="btn btn-danger log-button" [disabled]="!userName" (click)="logout()">Logout</button>
+    </div>
+  </li>
+</ul> <!-- end navbar right -->

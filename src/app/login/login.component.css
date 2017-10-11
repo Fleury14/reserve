@@ -1,0 +1,21 @@
+.button-box {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu > li {
+    padding: 10px;
+}
+
+.dropdown-menu > li:hover {
+    background-color: #ddd;
+}
+
+.provider {
+    color: #fff;
+}
+
+.log-button {
+    margin-left: 20px;
+}
