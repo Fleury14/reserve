@@ -2,3 +2,4 @@
 <p>ID: {{ thisId }}</p>
 <p *ngIf="userName">User is logged in as {{userName.name}}</p>
 <p *ngIf="!userName">User is NOT logged in</p>
+<button class="btn btn-info" (click)="toggleCanDeactivate()">Can you leave? {{CanIDeactivate}}</button>
