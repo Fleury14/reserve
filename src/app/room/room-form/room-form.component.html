@@ -1,0 +1,7 @@
+<form #roomForm="ngForm" (ngSubmit)="submittingForm(roomForm)" novalidate>
+    <input name="textInput" type="text" ngModel>
+    <input name="emailInput" type="email" ngModel>
+    <input type="submit">
+</form>
+
+{{ roomForm.value | json }}
