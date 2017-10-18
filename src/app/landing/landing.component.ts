@@ -1,8 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoginService } from './../services/login.service';
+
+
 
 @Component({
     selector: 'app-landing',
     templateUrl: './landing.component.html'
 })
 
-export class LandingComponent { }
+export class LandingComponent implements OnInit {
+
+
+    public showWarning: boolean = null;
+    constructor(private route: ActivatedRoute, login: LoginService) {
+
+    }
+
+    ngOnInit() {
+
+        // console.log('params', this.route.snapshot.fragment);
+        this.route.fragment.subscribe({
+            next: data => {
+                console.log(data);
+                this.checkForWarning(data);
+            },
+            error: error => {console.log(error); },
+            complete: () => {
+                console.log('Done!!');
+            }
+        });
+    }
+
+    private checkForWarning(data) {
+        if (data === 'show-warning') {
+            this.showWarning = true;
+        } else {
+            this.showWarning = false;
+        }
+    }
+}

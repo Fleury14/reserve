@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { LoginService } from './login.service';
+
 
 interface Test {
     a: string;
@@ -11,11 +12,18 @@ interface Test {
 
 export class LoginRouterGuard implements CanActivate {
 
-    constructor( private login: LoginService) {
+    constructor( private login: LoginService, private route: Router) {
 
     }
 
     canActivate() {
-        return this.login.getLoggedInUser() ? true : false;
+
+        if (this.login.getLoggedInUser()) {
+            return true;
+        } else  {
+            this.route.navigate(['landing'], {fragment: 'show-warning'});
+            return false;
+        }
+
     }
 }

@@ -21,7 +21,7 @@ export class LoginService {
         this._loggedInUser = null;
         console.log(this.router.url);
         if (this.router.url.includes('/room')) {
-            this.router.navigateByUrl('landing');
+            this.router.navigate(['landing'], {fragment: 'show-warning'});
         }
 
     }

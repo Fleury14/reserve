@@ -22,7 +22,11 @@ const appRoute: Routes = [{
     component: RoomComponent,
     canActivate: [ LoginRouterGuard ],
     canDeactivate: [ CanDeactivateService ]
+}, {
+    path: '**',
+    component: LandingComponent
 }
+
 
 ];
 
