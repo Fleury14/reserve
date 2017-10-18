@@ -1,7 +1,65 @@
-<form #roomForm="ngForm" (ngSubmit)="submittingForm(roomForm)" novalidate>
-    <input name="textInput" type="text" ngModel>
-    <input name="emailInput" type="email" ngModel>
-    <input type="submit">
+<h1>Make a reservation for a room of ID: {{ roomId }}</h1>
+
+<form #roomForm="ngForm" (ngSubmit)="submittingForm()" novalidate>
+    <div class="my-form-item">
+        <label for="reserveForInput">Reserve For</label>
+        <select name="reserveForInput" #reserveForInput="ngModel" ngModel required>
+            <option *ngFor="let value of options" (value)="value">{{ value }}</option>
+        </select>
+        <p *ngIf="reserveForInput.invalid">You need to select something</p>
+    </div>
+    <div class="my-form-item">
+        <label for="nameInput">Contact Name</label>
+        <input name="nameInput" type="text" placeholder="Name" ngModel required [ngClass]="{danger: roomForm.controls?.nameInput?.invalid, valid: roomForm.controls?.nameInput?.valid}">
+    </div>
+    <div class="my-form-item">
+        <label for="emailInput">Contact E-Mail</label>
+        <input name="emailInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailInput?.invalid, valid: roomForm.controls?.emailInput?.valid}">
+    </div>
+    
+    <!-- <div class="my-form-item">
+        <label for="">Month</label>
+        <select name="monthInput" id="" class="form-control month-field" placeholder="Month" ngModel>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+        </select>
+    </div>
+    <div class="my-form-item">
+            <label for="">Day</label>
+            <select name="dayInput" id="" class="form-control day-field" placeholder="Month" ngModel>
+                <option *ngFor="let num of numArray">{{ num }}</option>
+                <option *ngIf="roomForm.controls?.monthInput?.value !== 'February'">29</option>
+                <option *ngIf="roomForm.controls?.monthInput?.value !== 'February'">30</option>
+                <option *ngIf="isDayValid(31,roomForm.controls?.monthInput?.value)">31</option>
+            </select>
+    </div> -->
+    <div class="my-form-item">
+        <label for="">Reservation Date</label>
+        <input type="date" name="dateInput" ngModel required>
+    </div>
+    <div class="my-form-item">
+        <label for="">Start Time</label>
+        <input type="time" name="startTimeInput" ngModel required>
+    </div>
+    <div class="my-form-item">
+        <label for="">Start Time</label>
+        <input type="time" name="endTimeInput" ngModel required>
+    </div>
+    <!-- <div class="my-form-item">
+        <label for="reasonInput" class="display-block">Extra Notes<br></label>
+        <textarea class="form-control" name="reasonInput" type="textarea" placeholder="Reason for Reserving room" rows="5" ngModel></textarea>
+    </div> -->
+    <input class="btn btn-info" type="submit" [disabled]="roomForm.invalid">
 </form>
 
 {{ roomForm.value | json }}

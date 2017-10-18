@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RoomFormComponent} from './room/room-form/room-form.component';
 
 import { LoginService } from './services/login.service';
+import { RoomService } from './services/room.service';
 // import { WhateverComponent } from './whatever/whatever-component';
 // import { GarbageComponent } from './garbage/garbage-component';
 
@@ -24,7 +25,7 @@ import { LoginService } from './services/login.service';
 @NgModule({
     declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent, RoomFormComponent],
     imports: [ BrowserModule, AppRoutingModule, FormsModule ],
-    providers: [ LoginService ],
+    providers: [ LoginService, RoomService ],
     bootstrap: [ RootComponent ]
 })
 

@@ -1,0 +1,28 @@
+.danger {
+    box-shadow: 0px 0px 10px #f00;
+}
+
+.valid {
+    box-shadow: 0px 0px 10px #0c0;
+}
+
+.dirty {
+    background-color: yellow;
+}
+
+.month-field {
+    display: inline-block;
+    width: 20%;
+}
+
+.day-field {
+    width: 10%;
+}
+
+.my-form-item {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
