@@ -13,20 +13,26 @@ export class RoomService {
         this.roomList = [];
 
         this.roomList.push({
-            id: 'one',
-            name: 'Room One',
+            id: 'mario',
+            name: 'Mario',
             picture: null,
             reservations: []
         });
         this.roomList.push({
-            id: 'two',
-            name: 'Room Two',
+            id: 'zelda',
+            name: 'Zelda',
             picture: null,
             reservations: []
         });
         this.roomList.push({
-            id: 'three',
-            name: 'Room Three',
+            id: 'dk',
+            name: 'Donkey Kong',
+            picture: null,
+            reservations: []
+        });
+        this.roomList.push({
+            id: 'halo',
+            name: 'Halo',
             picture: null,
             reservations: []
         });

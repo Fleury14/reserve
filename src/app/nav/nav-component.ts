@@ -19,24 +19,29 @@ export class NavComponent {
         this.navArr = [
             {
                 name: 'landing',
-                display: 'Landing Component',
+                display: 'Welcome',
                 url: 'landing'
             },
 
             {
-                name: 'room1',
-                display: 'Room One',
-                url: 'room/one'
+                name: 'mario',
+                display: 'Mario',
+                url: 'room/mario'
             },
             {
-                name: 'room2',
-                display: 'Room Two',
-                url: 'room/two'
+                name: 'zelda',
+                display: 'Zelda',
+                url: 'room/zelda'
             },
             {
-                name: 'room3',
-                display: 'Room Three',
-                url: 'room/three'
+                name: 'dk',
+                display: 'Donkey Kong',
+                url: 'room/dk'
+            },
+            {
+                name: 'halo',
+                display: 'Halo',
+                url: 'room/halo'
             }
         ];
         console.log(this.navArr);
