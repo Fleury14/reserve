@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+.align-center {
+    align-items: center;
+}
+
 .display-block {
     display: block;
 }
+
+.flex-container {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+

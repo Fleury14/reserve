@@ -1,6 +1,16 @@
 <p>Welcome to room...</p>
 <p>ID: {{ thisId }}</p>
-<app-room-form [roomId]="thisId"></app-room-form>
+
 <p *ngIf="userName">User is logged in as {{userName.name}}</p>
 <p *ngIf="!userName">User is NOT logged in</p>
 <button class="btn btn-info" (click)="toggleCanDeactivate()">Can you leave? {{CanIDeactivate}}</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 flex-container align-center justify-center">
+            Picture of room {{ thisId }} will go here.
+        </div>
+        <div class="col-sm-6">
+            <app-room-form [roomId]="thisId"></app-room-form>
+        </div>
+    </div>
+</div>

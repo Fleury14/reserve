@@ -1,6 +1,6 @@
-<h1>Make a reservation for a room of ID: {{ roomId }}</h1>
+<h2>Create a reservations for {{ roomId }}.</h2>
 
-<form #roomForm="ngForm" (ngSubmit)="submittingForm()" novalidate>
+<form #roomForm="ngForm" (ngSubmit)="submittingForm()" novalidate class="room-form">
     <div class="my-form-item">
         <label for="reserveForInput">Reserve For</label>
         <select name="reserveForInput" #reserveForInput="ngModel" ngModel required>
@@ -17,24 +17,8 @@
         <input name="emailInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailInput?.invalid, valid: roomForm.controls?.emailInput?.valid}">
     </div>
     
+
     <!-- <div class="my-form-item">
-        <label for="">Month</label>
-        <select name="monthInput" id="" class="form-control month-field" placeholder="Month" ngModel>
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
-            <option>June</option>
-            <option>July</option>
-            <option>August</option>
-            <option>September</option>
-            <option>October</option>
-            <option>November</option>
-            <option>December</option>
-        </select>
-    </div>
-    <div class="my-form-item">
             <label for="">Day</label>
             <select name="dayInput" id="" class="form-control day-field" placeholder="Month" ngModel>
                 <option *ngFor="let num of numArray">{{ num }}</option>
@@ -59,7 +43,18 @@
         <label for="reasonInput" class="display-block">Extra Notes<br></label>
         <textarea class="form-control" name="reasonInput" type="textarea" placeholder="Reason for Reserving room" rows="5" ngModel></textarea>
     </div> -->
+    <div class="checkbox">
+        <label for="agree2Clean">
+                <input type="checkbox" name="agree2Clean" ngModel required>I agree to leave the room in the same condition it was in when I arrived.
+        </label>
+        
+    </div>
     <input class="btn btn-info" type="submit" [disabled]="roomForm.invalid">
 </form>
+<div class="alert alert-warning">
+    <p *ngIf="roomForm.invalid">You have fields that need to be filled out.</p>
+    <!-- Remove the following once candeactivate guard has been updated -->
+    <p *ngIf="roomForm.dirty">You have changed that have not been saved. Leaving will nullify those changes.</p>
+</div>
 
 {{ roomForm.value | json }}
