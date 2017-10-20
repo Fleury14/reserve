@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 // import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { RootComponent } from './app-component';
 import { NavComponent } from './nav/nav-component';
@@ -24,7 +27,7 @@ import { RoomService } from './services/room.service';
 
 @NgModule({
     declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent, RoomFormComponent],
-    imports: [ BrowserModule, AppRoutingModule, FormsModule ],
+    imports: [ BrowserModule, AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule ],
     providers: [ LoginService, RoomService ],
     bootstrap: [ RootComponent ]
 })
