@@ -1,21 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RoomComponent } from './room.component';
 import { RoomFormComponent } from './room-form/room-form.component';
 import { RoomListComponent } from './room-list/room-list.component';
 
 const routes: Routes = [{
-    path: 'list',
-    component: RoomListComponent
-},
-{
-    path: 'form',
-    component: RoomFormComponent
-},
-{
-    path: '',
-    redirectTo: 'list',
-    pathMatch: 'full'
+    path: 'room/:id',
+    component: RoomComponent,
+    children: [
+        {
+            path: 'list',
+            component: RoomListComponent
+        },
+        {
+            path: 'form',
+            component: RoomFormComponent
+        },
+        {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
+        }
+    ]
 }];
 
 @NgModule({
@@ -25,5 +32,5 @@ const routes: Routes = [{
 
 export class RoomRoutingModule {}
 
-export const RoutingComponents = [ RoomFormComponent, RoomListComponent ]
+export const RoutingComponents = [ RoomFormComponent, RoomListComponent ];
 
