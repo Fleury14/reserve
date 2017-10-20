@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import IReservation from './../../../interfaces/reservation.interface';
+import { ICanDeactivate } from './../../services/can-deactivate-guard.service';
 
 import { RoomService } from './../../services/room.service';
 
@@ -11,7 +12,7 @@ import { RoomService } from './../../services/room.service';
     styleUrls: [ './room-form.component.css' ]
 })
 
-export class RoomFormComponent implements OnInit {
+export class RoomFormComponent implements OnInit, ICanDeactivate {
 
     @ViewChild('roomForm')
     private _roomForm: NgForm;
@@ -50,6 +51,13 @@ export class RoomFormComponent implements OnInit {
         this.room.addReservation(this.roomId, _reservation);
 
         this._roomForm.reset();
+    }
+
+    public canDeactivate() {
+        if (this._roomForm.pristine || this._roomForm.submitted) { return true;
+        } else {
+            return confirm('Changes will be lost. Continue?');
+        }
     }
 
 

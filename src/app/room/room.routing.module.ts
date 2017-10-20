@@ -6,6 +6,7 @@ import { RoomFormComponent } from './room-form/room-form.component';
 import { RoomListComponent } from './room-list/room-list.component';
 
 import { LoginRouterGuard } from './../services/router-guard';
+import { CanDeactivateService } from './../services/can-deactivate-guard.service';
 
 const routes: Routes = [{
     path: 'room/:id',
@@ -17,7 +18,8 @@ const routes: Routes = [{
         },
         {
             path: 'form',
-            component: RoomFormComponent
+            component: RoomFormComponent,
+            canDeactivate: [ CanDeactivateService ]
         },
         {
             path: '',
