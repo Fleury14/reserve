@@ -48,7 +48,8 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
             endDateTime: this._roomForm.value.endTimeInput
         };
 
-        this.room.addReservation(this.roomId, _reservation);
+        console.log('Reservation submitted with the following values:', _reservation);
+
 
         this._roomForm.reset();
     }
