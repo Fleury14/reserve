@@ -52,4 +52,16 @@ export class RoomService {
 
         console.log(this.roomList);
     }
+
+    public getReservations(roomId) {
+        if (this.getRoomById(roomId).reservations.length === 0) {
+            return null;
+        } else {
+            return this.getRoomById(roomId).reservations;
+        }
+        // console.log(`roomid is:`, roomId);
+        // console.log(`rooms reservations`, this.getRoomById(roomId));
+        // console.log(`buuuut entire room array is`, this.roomList);
+
+    }
 }
