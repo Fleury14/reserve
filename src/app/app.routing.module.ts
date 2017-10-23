@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
-// import { RootComponent } from './app-component';
-// import { NavComponent } from './nav/nav-component';
+
 import { LandingComponent } from './landing/landing.component';
 import { RoomComponent } from './room/room.component';
+import { Four04Component } from './four04/four04.component';
 
 import { LoginRouterGuard } from './services/router-guard';
 import { CanDeactivateService } from './services/can-deactivate-guard.service';
@@ -24,7 +23,7 @@ const appRoute: Routes = [{
     canDeactivate: [ CanDeactivateService ]
 }, {
     path: '**',
-    component: LandingComponent
+    component: Four04Component
 }
 
 
@@ -41,4 +40,4 @@ export class AppRoutingModule {
 
  }
 
-export const routingComponents = [LandingComponent, RoomComponent];
+export const routingComponents = [LandingComponent, RoomComponent, Four04Component];

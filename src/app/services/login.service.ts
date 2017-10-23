@@ -15,6 +15,10 @@ export class LoginService {
         this._loggedInUser = {
             name: 'J.R. Ruggiero'
         };
+        console.log(this.router.url);
+        if (this.router.url.includes('/landing#show-warning')) {
+            this.router.navigateByUrl('landing');
+        }
     }
 
     public logout() {
