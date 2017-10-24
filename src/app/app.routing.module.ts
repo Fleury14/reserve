@@ -22,6 +22,10 @@ const appRoute: Routes = [{
     canActivate: [ LoginRouterGuard ],
     canDeactivate: [ CanDeactivateService ]
 }, {
+    path: '',
+    redirectTo: 'landing',
+    pathMatch: 'full'
+}, {
     path: '**',
     component: Four04Component
 }

@@ -1,13 +1,13 @@
-<p>Welcome to room...</p>
-<p>ID: {{ thisId }}</p>
+<h1 class="text-center"> {{ thisId }}</h1>
 
-<p *ngIf="userName">User is logged in as {{userName.name}}</p>
-<p *ngIf="!userName">User is NOT logged in</p>
-<button class="btn btn-info" (click)="toggleCanDeactivate()">Can you leave? {{CanIDeactivate}}</button>
+<h3 class="text-center" *ngIf="userName">Welcome, {{userName.name}}</h3>
+<p  class="text-warning" *ngIf="!userName">You are not logged in. You will not be able to view any rooms without logging in first.</p>
+<div class="space-divider"></div>
+<!-- <button class="btn btn-info" (click)="toggleCanDeactivate()">Can you leave? {{CanIDeactivate}}</button> -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6 flex-container align-center justify-center">
-            Picture of room {{ thisId }} will go here.
+        <div class="col-sm-6 picture-column flex-container align-center justify-center">
+            <h2 class="text-uppercase room-pic font-start">{{ thisId }}</h2>
         </div>
         <div class="col-sm-6">
             <!-- <app-room-list></app-room-list>

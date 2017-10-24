@@ -7,7 +7,8 @@ import { ICanDeactivate } from './../services/can-deactivate-guard.service';
 
 @Component({
     selector: 'app-room',
-    templateUrl: './room.html'
+    templateUrl: './room.html',
+    styleUrls: [ './room.component.css' ]
 })
 
 export class RoomComponent implements OnInit, ICanDeactivate {
