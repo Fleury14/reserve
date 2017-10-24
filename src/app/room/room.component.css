@@ -1,0 +1,13 @@
+.picture-column {
+    height: 525px;
+}
+
+.space-divider {
+    height: 25px;
+    visibility: hidden;
+    width: 100%;
+}
+
+.room-pic {
+    font-size: 36px;
+}
