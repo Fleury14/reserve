@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from './../services/login.service';
 
+import 'rxjs/add/operator/map';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -25,7 +27,9 @@ export class LoginComponent implements OnInit {
                     pictureURL: user.photoURL
                 };
             })
-            .subscribe( user => {this.loggedInUser = user;
+            .subscribe( user => {
+                this.loggedInUser = user;
+                // console.log(this.loggedInUser.displayName);
             });
     }
 

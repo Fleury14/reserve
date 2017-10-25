@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
   <li>
-    <div class="button-box"><span *ngIf="userName" class="provider">{{ userName.name }}</span></div>
+    <div class="button-box"><span *ngIf="loggedInUser" class="provider">{{ loggedInUser.displayName }}</span></div>
   </li>
   <li><div class="button-box"><span *ngIf="authProvider !== undefined" class="provider">{{ authProvider }}</span></div> </li>
     
@@ -14,8 +14,8 @@
   </li>
   <li>
     <div class="button-box">
-      <button class="btn btn-success log-button" [disabled]="userName" (click)="login()">Login</button>
-      <button class="btn btn-danger log-button" [disabled]="!userName" (click)="logout()">Logout</button>
+      <button class="btn btn-success log-button" [disabled]="loggedInUser" (click)="login()">Login</button>
+      <button class="btn btn-danger log-button" [disabled]="!loggedInUser" (click)="logout()">Logout</button>
     </div>
   </li>
 </ul> <!-- end navbar right -->
