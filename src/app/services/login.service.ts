@@ -18,7 +18,7 @@ export class LoginService {
     public login(authProvider): Promise<any> {
         // console.log(this.router.url);
         // remove login warning by navigating to same landing page without the fragment
-        if (this.router.url.includes('/landing#show-warning')) {
+        if (this.router.url.includes('/landing#show-warning') || this.router.url.includes('/landing#no-provider')) {
             this.router.navigateByUrl('landing');
         }
 
@@ -29,6 +29,7 @@ export class LoginService {
             return this._authService.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
         } else { // otherwise throw an error
             console.log('Error: Incorrect proivder called to login service:', authProvider);
+            this.router.navigate(['landing'], {fragment: 'no-provider'});
             return null;
         }
 
