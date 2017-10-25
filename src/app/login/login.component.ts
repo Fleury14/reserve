@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
             });
     }
 
-    public login() {
-        this.loginService.login();
+    public login(authProvider) {
+        this.loginService.login(authProvider);
         console.log('User logged in');
     }
 

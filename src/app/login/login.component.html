@@ -2,10 +2,10 @@
   <li>
     <div class="button-box"><span *ngIf="loggedInUser" class="provider">{{ loggedInUser.displayName }}</span></div>
   </li>
-  <li><div class="button-box"><span *ngIf="authProvider !== undefined" class="provider">{{ authProvider }}</span></div> </li>
+  <li><div *ngIf="loggedInUser" class="button-box"><img src="loggedInUser.pictureURL" alt="" class="img-responsive"></div> </li>
     
   <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Provider <span class="caret"></span></a>
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span *ngIf="authProvider">{{ authProvider }}</span><span *ngIf="!authProvider">Provider</span> <span class="caret"></span></a>
       <ul class="dropdown-menu">
       <li (click)="dropdownGithub()">Github</li>
       <li (click)="dropdownGoogle()">Google</li>
@@ -14,7 +14,7 @@
   </li>
   <li>
     <div class="button-box">
-      <button class="btn btn-success log-button" [disabled]="loggedInUser" (click)="login()">Login</button>
+      <button class="btn btn-success log-button" [disabled]="loggedInUser" (click)="login(authProvider)">Login</button>
       <button class="btn btn-danger log-button" [disabled]="!loggedInUser" (click)="logout()">Logout</button>
     </div>
   </li>

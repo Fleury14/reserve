@@ -15,20 +15,30 @@ export class LoginService {
         this._loggedInUser = _authService.authState;
     }
 
-    public login(): Promise<any> {
+    public login(authProvider): Promise<any> {
         // console.log(this.router.url);
-        // if (this.router.url.includes('/landing#show-warning')) {
-        //     this.router.navigateByUrl('landing');
-        // }
+        // remove login warning by navigating to same landing page without the fragment
+        if (this.router.url.includes('/landing#show-warning')) {
+            this.router.navigateByUrl('landing');
+        }
 
-        return this._authService.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+        // check auth provider
+        if (authProvider === 'Google') { // if its google..
+            return this._authService.auth.signInWithPopup((new firebase.auth.GoogleAuthProvider));
+        } else if (authProvider === 'Github') { // otherwise if its github...
+            return this._authService.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+        } else { // otherwise throw an error
+            console.log('Error: Incorrect proivder called to login service:', authProvider);
+            return null;
+        }
+
     }
 
     public logout(): Promise<any> {
         // console.log(this.router.url);
-        // if (this.router.url.includes('/room')) {
-        //     this.router.navigate(['landing'], {fragment: 'show-warning'});
-        // }
+        if (this.router.url.includes('/room')) {
+            this.router.navigate(['landing'], {fragment: 'show-warning'});
+        }
 
         return this._authService.auth.signOut();
 

@@ -12,18 +12,24 @@ interface Test {
 
 export class LoginRouterGuard implements CanActivate {
 
+    private _loggedIn: Boolean;
+
+
     constructor( private login: LoginService, private route: Router) {
 
     }
 
     canActivate() {
 
-        if (this.login.getLoggedInUser()) {
-            return true;
-        } else  {
-            this.route.navigate(['landing'], {fragment: 'show-warning'});
-            return false;
-        }
+      return this.login.getLoggedInUser().map(
+          loggedInUser => {
+              if (loggedInUser) { return true; }
+
+              this.route.navigate(['landing'], {fragment: 'show-warning'});
+
+              return false;
+          }
+      );
 
     }
 }
