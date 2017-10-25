@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from './../services/login.service';
 
@@ -8,9 +8,26 @@ import { LoginService } from './../services/login.service';
     styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     private authProvider: string;
 
+    public loggedInUser;
+
+
+    ngOnInit() {
+
+        this.loginService.getLoggedInUser()
+            .map(user => {
+                if (!user) {return; }
+
+                return {
+                    displayName: user.displayName,
+                    pictureURL: user.photoURL
+                };
+            })
+            .subscribe( user => {this.loggedInUser = user;
+            });
+    }
 
     public login() {
         this.loginService.login();
@@ -30,9 +47,9 @@ export class LoginComponent {
         this.authProvider = 'Google';
     }
 
-    get userName() {
-        return this.loginService.getLoggedInUser();
-    }
+    // get userName() {
+    //     return this.loginService.getLoggedInUser();
+    // }
 
     constructor (private loginService: LoginService) {}
 
