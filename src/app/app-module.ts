@@ -6,6 +6,7 @@ import { RoomModule } from './room/room.module';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { RootComponent } from './app-component';
 import { NavComponent } from './nav/nav-component';

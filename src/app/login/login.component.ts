@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from './../services/login.service';
+
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'app-login',
@@ -8,12 +10,31 @@ import { LoginService } from './../services/login.service';
     styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     private authProvider: string;
 
+    public loggedInUser;
 
-    public login() {
-        this.loginService.login();
+
+    ngOnInit() {
+
+        this.loginService.getLoggedInUser()
+            .map(user => {
+                if (!user) {return; }
+
+                return {
+                    displayName: user.displayName,
+                    pictureURL: user.photoURL
+                };
+            })
+            .subscribe( user => {
+                this.loggedInUser = user;
+                // console.log(this.loggedInUser.displayName);
+            });
+    }
+
+    public login(authProvider) {
+        this.loginService.login(authProvider);
         console.log('User logged in');
     }
 
@@ -30,9 +51,9 @@ export class LoginComponent {
         this.authProvider = 'Google';
     }
 
-    get userName() {
-        return this.loginService.getLoggedInUser();
-    }
+    // get userName() {
+    //     return this.loginService.getLoggedInUser();
+    // }
 
     constructor (private loginService: LoginService) {}
 

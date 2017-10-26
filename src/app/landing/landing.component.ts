@@ -11,7 +11,7 @@ import { LoginService } from './../services/login.service';
 
 export class LandingComponent implements OnInit {
 
-
+    public noProviderError: boolean = null;
     public showWarning: boolean = null;
     constructor(private route: ActivatedRoute, login: LoginService) {
 
@@ -35,8 +35,11 @@ export class LandingComponent implements OnInit {
     private checkForWarning(data) {
         if (data === 'show-warning') {
             this.showWarning = true;
+        } else if (data === 'no-provider') {
+            this.noProviderError = true;
         } else {
             this.showWarning = false;
+            this.noProviderError = false;
         }
     }
 }
