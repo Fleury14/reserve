@@ -32,7 +32,7 @@ export class NavComponent {
                     const navItem: NavItem = {
                         name: room.id,
                         display: room.name,
-                        url: 'rooms/' + room.id
+                        url: 'room/' + room.id
                     };
                     return navItem;
                 });
