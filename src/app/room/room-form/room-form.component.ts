@@ -18,9 +18,7 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     @ViewChild('roomForm')
     private _roomForm: NgForm;
     public options: string[];
-    // private _30DayMonths: String[] = [ 'September', 'April', 'June', 'November' ];
-    // public numArray = [];
-    @Input()
+
     public roomId: string;
 
 
@@ -38,18 +36,17 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
             'Scrum Meeting'
         ];
 
+        this._activatedRoute.parent.paramMap.subscribe(param => {
+            this._changeRoom(param.get('id'));
+        });
+    }
+
+    private _changeRoom(id: string) {
+        this.roomId = id;
     }
 
     private submittingForm(reservationValues: IReservation) {
-        // console.log(this._roomForm);
-        // const _reservation: IReservation = {
-        //     email: this._roomForm.value.emailInput,
-        //     reason: this._roomForm.value.reserveForInput,
-        //     startTime: this._roomForm.value.startTimeInput,
-        //     endTime: this._roomForm.value.endTimeInput,
-        //     emailConfirmation: this._roomForm.value.confirmInput,
-        //     isAgreed: this._roomForm.value.agree2Clean
-        // };
+
 
         // console.log('Reservation submitted with the following values:', _reservation);
         console.log('reservation values:', reservationValues);
@@ -67,17 +64,4 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     }
 
 
-    // public isDayValid(day, month?) {
-    //     console.log(month, day);
-    //     if (month == null) {
-    //         return false;
-    //     }
-    //     if (month === 'February' && day > 29) {
-    //         return false;
-    //     } else if (this._30DayMonths.indexOf(month) >= 0 && day > 30) {
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
 }

@@ -2,48 +2,38 @@
 
 <form #roomForm="ngForm" (ngSubmit)="submittingForm(roomForm.value)" novalidate class="room-form">
     <div class="my-form-item">
-        <label for="reserveForInput">Reserve For</label>
-        <select name="reserveForInput" #reserveForInput="ngModel" ngModel required>
+        <label for="reason">Reserve For</label>
+        <select name="reason" #reserveForInput="ngModel" ngModel required>
             <option *ngFor="let value of options" (value)="value">{{ value }}</option>
         </select>
         <p *ngIf="reserveForInput.invalid">You need to select something</p>
     </div>
    
     <div class="my-form-item">
-        <label for="emailInput">Contact E-Mail</label>
-        <input name="emailInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailInput?.invalid, valid: roomForm.controls?.emailInput?.valid}">
+        <label for="email">Contact E-Mail</label>
+        <input name="email" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.email?.invalid, valid: roomForm.controls?.email?.valid}">
     </div>
     <div class="my-form-item">
-        <label for="emailInput">Repeat E-mail for confirmation</label>
-        <input name="confirmInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.confirmInput?.invalid, valid: roomForm.controls?.confirmInput?.valid}">
+        <label for="emailConfirmation">Repeat E-mail for confirmation</label>
+        <input name="emailConfirmation" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailConfirmation?.invalid, valid: roomForm.controls?.emailConfirmation?.valid}">
     </div>
     
-
-    <!-- <div class="my-form-item">
-            <label for="">Day</label>
-            <select name="dayInput" id="" class="form-control day-field" placeholder="Month" ngModel>
-                <option *ngFor="let num of numArray">{{ num }}</option>
-                <option *ngIf="roomForm.controls?.monthInput?.value !== 'February'">29</option>
-                <option *ngIf="roomForm.controls?.monthInput?.value !== 'February'">30</option>
-                <option *ngIf="isDayValid(31,roomForm.controls?.monthInput?.value)">31</option>
-            </select>
-    </div> -->
    
     <div class="my-form-item">
         <label for="">Start Time</label>
-        <input type="time" name="startTimeInput" ngModel required>
+        <input type="time" name="startTime" ngModel required>
     </div>
     <div class="my-form-item">
         <label for="">End Time</label>
-        <input type="time" name="endTimeInput" ngModel required>
+        <input type="time" name="endTime" ngModel required>
     </div>
     <!-- <div class="my-form-item">
         <label for="reasonInput" class="display-block">Extra Notes<br></label>
         <textarea class="form-control" name="reasonInput" type="textarea" placeholder="Reason for Reserving room" rows="5" ngModel></textarea>
     </div> -->
     <div class="checkbox">
-        <label for="agree2Clean">
-                <input type="checkbox" name="agree2Clean" ngModel required>I agree to leave the room in the same condition it was in when I arrived.
+        <label for="isAgreed">
+                <input type="checkbox" name="isAgreed" ngModel required>I agree to leave the room in the same condition it was in when I arrived.
         </label>
         
     </div>
