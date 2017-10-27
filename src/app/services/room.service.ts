@@ -50,6 +50,8 @@ export class RoomService {
     }
 
     public addReservation(passedId: string, reservation: IReservation) {
+
+        return this._roomDatabase.list('rooms/' + passedId + '/reservations').push(reservation);
         // this.getRoomById(passedId).reservations.push({
         //     email: reservation.email,
         //     reason: reservation.reason,
@@ -60,7 +62,9 @@ export class RoomService {
         // console.log(this.roomList);
     }
 
-    public deleteReservation() {}
+    public deleteReservation(roomId, reservationId) {
+        return this._roomDatabase.list('rooms/' + roomId + '/reservations').remove(reservationId);
+    }
 
     // public getReservations(roomId) {
     //     if (this.getRoomById(roomId).reservations.length === 0) {
