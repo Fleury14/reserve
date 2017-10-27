@@ -1,5 +1,7 @@
-<h4>List of Reservations for {{roomId}}</h4>
+<h4>List of Reservations for {{room?.name}}</h4>
 <div class="well">
-    You have {{ reservations?.length || 'no' }} reservations today.
+    You have {{ room?.reservations?.length || 'no' }} reservations today.
 </div>
 <button class="btn btn-default" routerLink="../form">Make a reservation</button>
+<pre>{{ room | json }}</pre>
+<pre>{{ room?.reservations?.length }}</pre>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import IReservation from './../../../interfaces/reservation.interface';
 import { ICanDeactivate } from './../../services/can-deactivate-guard.service';
@@ -23,7 +24,7 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     public roomId: string;
 
 
-    constructor(public room: RoomService) {
+    constructor(public room: RoomService, private _activatedRoute: ActivatedRoute, private _router: Router) {
         // for (let days = 1; days < 29; days++) {
         //     this.numArray.push(days);
         // }
@@ -39,21 +40,23 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
 
     }
 
-    private submittingForm() {
+    private submittingForm(reservationValues: IReservation) {
         // console.log(this._roomForm);
-        const _reservation: IReservation = {
-            email: this._roomForm.value.emailInput,
-            reason: this._roomForm.value.reserveForInput,
-            startTime: this._roomForm.value.startTimeInput,
-            endTime: this._roomForm.value.endTimeInput,
-            emailConfirmation: this._roomForm.value.confirmInput,
-            isAgreed: this._roomForm.value.agree2Clean
-        };
+        // const _reservation: IReservation = {
+        //     email: this._roomForm.value.emailInput,
+        //     reason: this._roomForm.value.reserveForInput,
+        //     startTime: this._roomForm.value.startTimeInput,
+        //     endTime: this._roomForm.value.endTimeInput,
+        //     emailConfirmation: this._roomForm.value.confirmInput,
+        //     isAgreed: this._roomForm.value.agree2Clean
+        // };
 
-        console.log('Reservation submitted with the following values:', _reservation);
+        // console.log('Reservation submitted with the following values:', _reservation);
 
+        return this.room.addReservation(this.roomId, reservationValues)
+        .then(() => this._router.navigate(['../list'], { relativeTo: this._activatedRoute }));
 
-        this._roomForm.reset();
+        // this._roomForm.reset();
     }
 
     public canDeactivate() {
