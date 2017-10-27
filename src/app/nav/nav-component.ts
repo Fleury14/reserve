@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from './../login/login.component';
 
 import NavItem from '../../interfaces/nav-item';
 
+import 'rxjs/add/operator/do';
 
 import { RoomService } from './../services/room.service';
 
@@ -13,21 +14,26 @@ import { RoomService } from './../services/room.service';
 
 })
 
-export class NavComponent {
+export class NavComponent implements OnInit {
 
     public navArr: NavItem[];
 
-    constructor(private _roomService: RoomService) {
+    constructor(private _roomService: RoomService) { }
 
-        this.navArr = [];
+    ngOnInit() {
 
-        this.navArr.push({
-            name: 'landing',
-            display: 'Welcome',
-            url: 'landing'
-        });
 
         this._roomService.roomsObservable
+            .do(rooms => {
+                this.navArr = [];
+
+                        this.navArr.push({
+                            name: 'landing',
+                            display: 'Welcome',
+                            url: 'landing'
+                        });
+                    }
+            )
             .map(rooms => {
                 return rooms.map(room => {
                     const navItem: NavItem = {
