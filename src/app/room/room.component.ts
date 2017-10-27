@@ -17,6 +17,7 @@ export class RoomComponent implements OnInit, ICanDeactivate {
     private thisId: string;
     public CanIDeactivate: boolean;
     public room;
+    public loggedInUser;
 
     constructor(
         private actRout: ActivatedRoute,
@@ -28,16 +29,25 @@ export class RoomComponent implements OnInit, ICanDeactivate {
     }
 
     public ngOnInit() {
+       this.actRout.paramMap.subscribe(route => this._switchRoom(route.get('id')));
 
-        this.actRout.paramMap.subscribe(route => this._switchRoom(route.get('id')));
+       this.loginService.getLoggedInUser()
+       .map(user => {
+           if (!user) {return; }
+            const names = user.displayName.split(' ');
+           return {
+               displayName: names[0],
+               pictureURL: user.photoURL
+           };
+       })
+       .subscribe( user => {
+           this.loggedInUser = user;
+           // console.log(this.loggedInUser.displayName);
+       });
     }
 
     private _switchRoom(id: string) {
         this._roomService.getRoomById(id).subscribe(room => this.room = room);
-    }
-
-    get userName() {
-        return this.loginService.getLoggedInUser();
     }
 
     toggleCanDeactivate() {
