@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import IReservation from './../../../interfaces/reservation.interface';
 import { ICanDeactivate } from './../../services/can-deactivate-guard.service';
@@ -17,13 +18,11 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     @ViewChild('roomForm')
     private _roomForm: NgForm;
     public options: string[];
-    // private _30DayMonths: String[] = [ 'September', 'April', 'June', 'November' ];
-    // public numArray = [];
-    @Input()
+
     public roomId: string;
 
 
-    constructor(public room: RoomService) {
+    constructor(public room: RoomService, private _activatedRoute: ActivatedRoute, private _router: Router) {
         // for (let days = 1; days < 29; days++) {
         //     this.numArray.push(days);
         // }
@@ -37,21 +36,24 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
             'Scrum Meeting'
         ];
 
+        this._activatedRoute.parent.paramMap.subscribe(param => {
+            this._changeRoom(param.get('id'));
+        });
     }
 
-    private submittingForm() {
-        // console.log(this._roomForm);
-        const _reservation: IReservation = {
-            email: this._roomForm.value.emailInput,
-            reason: this._roomForm.value.reserveForInput,
-            startDateTime: this._roomForm.value.startTimeInput,
-            endDateTime: this._roomForm.value.endTimeInput
-        };
+    private _changeRoom(id: string) {
+        this.roomId = id;
+    }
 
-        console.log('Reservation submitted with the following values:', _reservation);
+    private submittingForm(reservationValues: IReservation) {
 
 
-        this._roomForm.reset();
+        // console.log('Reservation submitted with the following values:', _reservation);
+        console.log('reservation values:', reservationValues);
+        return this.room.addReservation(this.roomId, reservationValues)
+        .then(() => this._router.navigate(['../list'], { relativeTo: this._activatedRoute }));
+
+        // this._roomForm.reset();
     }
 
     public canDeactivate() {
@@ -62,17 +64,4 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     }
 
 
-    // public isDayValid(day, month?) {
-    //     console.log(month, day);
-    //     if (month == null) {
-    //         return false;
-    //     }
-    //     if (month === 'February' && day > 29) {
-    //         return false;
-    //     } else if (this._30DayMonths.indexOf(month) >= 0 && day > 30) {
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
 }

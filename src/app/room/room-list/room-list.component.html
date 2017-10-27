@@ -1,5 +1,12 @@
-<h4>List of Reservations for {{roomId}}</h4>
+<h4>List of Reservations for {{room?.name}}</h4>
 <div class="well">
-    You have {{ reservations?.length || 'no' }} reservations today.
+    You have {{ room?.reservations?.length || 'no' }} reservations today.
 </div>
 <button class="btn btn-default" routerLink="../form">Make a reservation</button>
+<div class="list-group" *ngFor="let reservation of room?.reservations">
+    <h4>{{ reservation.reason }}</h4>
+    <h5>{{ reservation.email }}</h5>
+    <p>{{ reservation.startTime }} - {{ reservation.endTime }}</p>
+    <button class="btn btn-danger btn-xs" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
+    <hr>
+</div>

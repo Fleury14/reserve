@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { LoginService } from './../services/login.service';
+import { RoomService } from './../services/room.service';
 
 import { ICanDeactivate } from './../services/can-deactivate-guard.service';
 
@@ -15,11 +16,12 @@ export class RoomComponent implements OnInit, ICanDeactivate {
 
     private thisId: string;
     public CanIDeactivate: boolean;
-    public roomId: string;
+    public room;
 
     constructor(
         private actRout: ActivatedRoute,
         private loginService: LoginService,
+        private _roomService: RoomService
 
     ) {
         this.CanIDeactivate = true;
@@ -27,14 +29,11 @@ export class RoomComponent implements OnInit, ICanDeactivate {
 
     public ngOnInit() {
 
-        this.actRout.paramMap.subscribe((parameters: ParamMap) => {
-            console.log(parameters.get('id'));
-            console.log('params', parameters);
-            this.thisId = parameters.get('id');
+        this.actRout.paramMap.subscribe(route => this._switchRoom(route.get('id')));
+    }
 
-            if (this.thisId === null) { this.thisId = 'Null dawg'; }
-
-        });
+    private _switchRoom(id: string) {
+        this._roomService.getRoomById(id).subscribe(room => this.room = room);
     }
 
     get userName() {
