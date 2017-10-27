@@ -16,6 +16,10 @@
         <label for="emailInput">Contact E-Mail</label>
         <input name="emailInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailInput?.invalid, valid: roomForm.controls?.emailInput?.valid}">
     </div>
+    <div class="my-form-item">
+        <label for="emailInput">Repeat E-mail for confirmation</label>
+        <input name="confirmInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.confirmInput?.invalid, valid: roomForm.controls?.confirmInput?.valid}">
+    </div>
     
 
     <!-- <div class="my-form-item">
@@ -36,7 +40,7 @@
         <input type="time" name="startTimeInput" ngModel required>
     </div>
     <div class="my-form-item">
-        <label for="">Start Time</label>
+        <label for="">End Time</label>
         <input type="time" name="endTimeInput" ngModel required>
     </div>
     <!-- <div class="my-form-item">

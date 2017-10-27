@@ -2,8 +2,10 @@ interface IReservation {
     id?: string;
     email: string;
     reason: string;
-    startDateTime: Date;
-    endDateTime: Date;
+    startTime: Date;
+    endTime: Date;
+    emailConfirmation: string;
+    isAgreed: string;
 }
 
 export default IReservation;

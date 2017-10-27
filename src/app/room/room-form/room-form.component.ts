@@ -44,8 +44,10 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
         const _reservation: IReservation = {
             email: this._roomForm.value.emailInput,
             reason: this._roomForm.value.reserveForInput,
-            startDateTime: this._roomForm.value.startTimeInput,
-            endDateTime: this._roomForm.value.endTimeInput
+            startTime: this._roomForm.value.startTimeInput,
+            endTime: this._roomForm.value.endTimeInput,
+            emailConfirmation: this._roomForm.value.confirmInput,
+            isAgreed: this._roomForm.value.agree2Clean
         };
 
         console.log('Reservation submitted with the following values:', _reservation);
