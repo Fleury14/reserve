@@ -14,21 +14,19 @@ import { RoomService } from './../../services/room.service';
 })
 
 export class RoomFormComponent implements OnInit, ICanDeactivate {
-
+    // use ViewChild to be able to access roomForm,s children
     @ViewChild('roomForm')
     private _roomForm: NgForm;
     public options: string[];
 
     public roomId: string;
 
-
+    // inject services
     constructor(public room: RoomService, private _activatedRoute: ActivatedRoute, private _router: Router) {
-        // for (let days = 1; days < 29; days++) {
-        //     this.numArray.push(days);
-        // }
     }
 
     ngOnInit() {
+        // instantiate options
         this.options = [
             'Client Meeting',
             'Job Interview',
@@ -36,26 +34,31 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
             'Scrum Meeting'
         ];
 
+        // make sure the current roomID var is updated with the current room by using the change room. failing to do so
+        // will not accurate update the database when you switch rooms, among other problems.
         this._activatedRoute.parent.paramMap.subscribe(param => {
             this._changeRoom(param.get('id'));
         });
     }
 
+    // this is the method to update the roomid
     private _changeRoom(id: string) {
         this.roomId = id;
     }
 
+    // method for submitting form. it will take in a set of values that will match the IReservation interface
+    // because of this, the value names in the HTML MUST MATCH the interface values, otherwise you will run into problems.
+    // this can be somewhat averted if we adjusted the data in this method, but its far less clean to do so
     private submittingForm(reservationValues: IReservation) {
 
-
-        // console.log('Reservation submitted with the following values:', _reservation);
-        console.log('reservation values:', reservationValues);
+    // use return to call the add reservation from the room service, use .then to navigate away from the form. this is so
+    // the user can visibly see their reservation being added.
         return this.room.addReservation(this.roomId, reservationValues)
         .then(() => this._router.navigate(['../list'], { relativeTo: this._activatedRoute }));
 
-        // this._roomForm.reset();
     }
 
+    // if the user tries to leave when the form is not pristine, send an alert to confirm.
     public canDeactivate() {
         if (this._roomForm.pristine || this._roomForm.submitted) { return true;
         } else {
