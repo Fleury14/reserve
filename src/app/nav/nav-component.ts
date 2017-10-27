@@ -15,18 +15,20 @@ import { RoomService } from './../services/room.service';
 })
 
 export class NavComponent implements OnInit {
-
+    // this will eventually hold the navigation items
     public navArr: NavItem[];
 
+    // inject room service
     constructor(private _roomService: RoomService) { }
 
     ngOnInit() {
 
-
         this._roomService.roomsObservable
             .do(rooms => {
                 this.navArr = [];
-
+// We have to use .do to make sure that this is executed everytime there is a change in the database. failing to put the array reset
+// above will result in the nav bar building a new set of nav items each time there is a change in the database.. which is what we want,
+// but it will place the new ones in ADDITION to the old ones. also, the landing component is pushed because it will always be in the list
                         this.navArr.push({
                             name: 'landing',
                             display: 'Welcome',
@@ -34,6 +36,8 @@ export class NavComponent implements OnInit {
                         });
                     }
             )
+// use .map to take the room object and convert it into individual room first by nesting the map, then converting the data into an object
+// that will fit the required NavItem interface. another benefit of typing
             .map(rooms => {
                 return rooms.map(room => {
                     const navItem: NavItem = {
@@ -44,46 +48,12 @@ export class NavComponent implements OnInit {
                     return navItem;
                 });
             })
+// finally, subscribe to that data and concat all the rooms on top of the welcome into the nav array. 
             .subscribe(rooms => {
                 this.navArr = this.navArr.concat(rooms);
             });
 
-        // console.log('Nav component initialized');
-        // this.navArr = [
-        //     {
-        //         name: 'landing',
-        //         display: 'Welcome',
-        //         url: 'landing'
-        //     },
-
-        //     {
-        //         name: 'mario',
-        //         display: 'Mario',
-        //         url: 'room/mario'
-        //     },
-        //     {
-        //         name: 'zelda',
-        //         display: 'Zelda',
-        //         url: 'room/zelda'
-        //     },
-        //     {
-        //         name: 'dk',
-        //         display: 'Donkey Kong',
-        //         url: 'room/dk'
-        //     },
-        //     {
-        //         name: 'halo',
-        //         display: 'Halo',
-        //         url: 'room/halo'
-        //     }
-        // ];
-        // console.log(this.navArr);
     }
 
-
-
-    alertTheUrl(url) {
-        alert(url);
-    }
 
 }
