@@ -45,8 +45,8 @@ export class RoomService {
         // });
     }
 
-    public getRoomById(passedId): IRoom {
-        return this.roomList.find(room => room.id === passedId);
+    public getRoomById(passedId): Observable<IRoom> {
+        return this.roomsObservable.map(rooms => rooms.find(room => room.id === passedId));
     }
 
     public addReservation(passedId: string, reservation: IReservation) {
@@ -62,15 +62,15 @@ export class RoomService {
 
     public deleteReservation() {}
 
-    public getReservations(roomId) {
-        if (this.getRoomById(roomId).reservations.length === 0) {
-            return null;
-        } else {
-            return this.getRoomById(roomId).reservations;
-        }
-        // console.log(`roomid is:`, roomId);
-        // console.log(`rooms reservations`, this.getRoomById(roomId));
-        // console.log(`buuuut entire room array is`, this.roomList);
+    // public getReservations(roomId) {
+    //     if (this.getRoomById(roomId).reservations.length === 0) {
+    //         return null;
+    //     } else {
+    //         return this.getRoomById(roomId).reservations;
+    //     }
+    //     console.log(`roomid is:`, roomId);
+    //     console.log(`rooms reservations`, this.getRoomById(roomId));
+    //     console.log(`buuuut entire room array is`, this.roomList);
 
-    }
+    // }
 }
