@@ -15,16 +15,16 @@ import { RoomService } from './../../services/room.service';
 
 export class RoomListComponent implements OnInit {
 
-    // public currentRoomReservations: IReservation[];
 
     // public roomId: string;
 
     public room: IRoom;
 
+
     constructor( private _route: ActivatedRoute, private _roomService: RoomService) { }
 
     public ngOnInit() {
-        // this.currentRoomReservations = [];
+
 
         this._route.parent.paramMap.subscribe(route => {
             this._switchRoom(route.get('id'));
@@ -34,7 +34,9 @@ export class RoomListComponent implements OnInit {
 
     private _switchRoom(id: string) {
         this._roomService.getRoomById(id).subscribe(room => { this.room = room; });
+    }
 
-
+    public deleteReservation(id) {
+        this._roomService.deleteReservation(this.room.id, id);
     }
 }
