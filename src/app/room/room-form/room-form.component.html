@@ -1,6 +1,6 @@
 <h2>Create a reservations for {{ roomId }}.</h2>
 
-<form #roomForm="ngForm" (ngSubmit)="submittingForm()" novalidate class="room-form">
+<form #roomForm="ngForm" (ngSubmit)="submittingForm(roomForm.value)" novalidate class="room-form">
     <div class="my-form-item">
         <label for="reserveForInput">Reserve For</label>
         <select name="reserveForInput" #reserveForInput="ngModel" ngModel required>
@@ -8,10 +8,7 @@
         </select>
         <p *ngIf="reserveForInput.invalid">You need to select something</p>
     </div>
-    <div class="my-form-item">
-        <label for="nameInput">Contact Name</label>
-        <input name="nameInput" type="text" placeholder="Name" ngModel required [ngClass]="{danger: roomForm.controls?.nameInput?.invalid, valid: roomForm.controls?.nameInput?.valid}">
-    </div>
+   
     <div class="my-form-item">
         <label for="emailInput">Contact E-Mail</label>
         <input name="emailInput" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailInput?.invalid, valid: roomForm.controls?.emailInput?.valid}">
@@ -31,10 +28,7 @@
                 <option *ngIf="isDayValid(31,roomForm.controls?.monthInput?.value)">31</option>
             </select>
     </div> -->
-    <div class="my-form-item">
-        <label for="">Reservation Date</label>
-        <input type="date" name="dateInput" ngModel required>
-    </div>
+   
     <div class="my-form-item">
         <label for="">Start Time</label>
         <input type="time" name="startTimeInput" ngModel required>

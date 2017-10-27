@@ -52,7 +52,7 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
         // };
 
         // console.log('Reservation submitted with the following values:', _reservation);
-
+        console.log('reservation values:', reservationValues);
         return this.room.addReservation(this.roomId, reservationValues)
         .then(() => this._router.navigate(['../list'], { relativeTo: this._activatedRoute }));
 

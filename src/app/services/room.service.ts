@@ -46,7 +46,20 @@ export class RoomService {
     }
 
     public getRoomById(passedId): Observable<IRoom> {
-        return this.roomsObservable.map(rooms => rooms.find(room => room.id === passedId));
+        return this.roomsObservable.map((rooms: IRoom[]) => rooms.find(room => room.id === passedId))
+        .map((room: IRoom) => {
+            const reservations = [];
+
+            for (let reservationKey in room.reservations) {
+                const reservation = room.reservations[reservationKey];
+                reservation.id = reservationKey;
+                reservations.push(reservation);
+            }
+
+            room.reservations = reservations;
+
+            return room;
+        });
     }
 
     public addReservation(passedId: string, reservation: IReservation) {
