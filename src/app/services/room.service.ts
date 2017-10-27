@@ -10,11 +10,13 @@ import IRoom from './../../interfaces/room.interface';
 export class RoomService {
 
     private roomList: IRoom[];
-    public roomsObservable: Observable<IRoom>;
+    public roomsObservable: Observable<IRoom[]>;
 
     constructor(private _roomDatabase: AngularFireDatabase) {
 
         this.roomsObservable = this._roomDatabase.list('rooms').valueChanges<IRoom>();
+
+        this.roomsObservable.subscribe(rooms => this.roomList = rooms);
         // this.roomList = [];
 
         // this.roomList.push({
@@ -43,20 +45,22 @@ export class RoomService {
         // });
     }
 
-    public getRoomById(passedId) {
+    public getRoomById(passedId): IRoom {
         return this.roomList.find(room => room.id === passedId);
     }
 
     public addReservation(passedId: string, reservation: IReservation) {
-        this.getRoomById(passedId).reservations.push({
-            email: reservation.email,
-            reason: reservation.reason,
-            startDateTime: reservation.startDateTime,
-            endDateTime: reservation.endDateTime
-        });
+        // this.getRoomById(passedId).reservations.push({
+        //     email: reservation.email,
+        //     reason: reservation.reason,
+        //     startDateTime: reservation.startDateTime,
+        //     endDateTime: reservation.endDateTime
+        // });
 
-        console.log(this.roomList);
+        // console.log(this.roomList);
     }
+
+    public deleteReservation() {}
 
     public getReservations(roomId) {
         if (this.getRoomById(roomId).reservations.length === 0) {

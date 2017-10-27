@@ -16,13 +16,14 @@ import { LoginComponent } from './login/login.component';
 // import { RoomListComponent } from './room/room-list/room-list.component';
 
 import { LoginService } from './services/login.service';
-// import { RoomService } from './services/room.service';
+import { RoomService } from './services/room.service';
 
 
 @NgModule({
     declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent],
-    imports: [ BrowserModule, RoomModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule ],
-    providers: [ LoginService ],
+    imports: [ BrowserModule, RoomModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
+    AngularFireDatabaseModule ],
+    providers: [ LoginService, RoomService ],
     bootstrap: [ RootComponent ]
 })
 
