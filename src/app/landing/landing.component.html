@@ -1,8 +1,9 @@
 <h1 class="text-center">Room Reservation</h1>
-<h3 class="text-center">Please Log in and then select a room.</h3>
-<div *ngIf="showWarning === true" class="alert alert-warning">
-    <p class="text-center">YOU DIDNT LOG IN CUZ</p>
+<h3 class="text-center">Welcome to a simulated room reservation system for Bitwise Industries</h3>
+<h4 class="text-center">Please log in, and select a room</h4>
+<div *ngIf="showWarning === true" class="alert alert-warning reserve-warning">
+    <p class="text-center">Please log in first before selecting a room.</p>
 </div>
-<div *ngIf="noProviderError === true" class="alert alert-warning">
+<div *ngIf="noProviderError === true" class="alert alert-warning reserve-warning">
     <p class="text-center">Please select a provider prior to logging in.</p>
 </div>
