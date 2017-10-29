@@ -12,8 +12,12 @@
 }
 
 .reservation-index {
-    height: 55px;
+    height: 106px;
     font-size: 40px;
     color: #080;
     min-width: 90px;
+}
+
+.make-reservation {
+    margin-bottom: 30px;
 }
