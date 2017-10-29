@@ -19,3 +19,12 @@
 .log-button {
     margin-left: 20px;
 }
+
+.my-menu {
+    background-color: #333;
+    border: 1px solid white;
+}
+
+.my-menu li:hover {
+    color: #000;
+}

@@ -4,9 +4,9 @@
   </li>
   <li><div *ngIf="loggedInUser" class="button-box"><img src="loggedInUser.pictureURL" alt="" class="img-responsive"></div> </li>
     
-  <li class="dropdown">
+  <li class="dropdown" *ngIf="!loggedInUser">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span *ngIf="authProvider">{{ authProvider }}</span><span *ngIf="!authProvider">Provider</span> <span class="caret"></span></a>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu my-menu">
       <li (click)="dropdownGithub()">Github</li>
       <li (click)="dropdownGoogle()">Google</li>
       
