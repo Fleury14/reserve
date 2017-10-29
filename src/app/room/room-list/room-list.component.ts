@@ -43,6 +43,9 @@ export class RoomListComponent implements OnInit {
 
     // simple method to call the deletion method inside the room service when necessary
     public deleteReservation(id) {
-        this._roomService.deleteReservation(this.room.id, id);
+        if ( confirm('Are you sure you want to delete this reservation?') === true ) {
+            this._roomService.deleteReservation(this.room.id, id);
+        }
+
     }
 }

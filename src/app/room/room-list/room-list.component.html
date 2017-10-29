@@ -3,7 +3,7 @@
     {{ room?.reservations?.length || 'None' }}
 </div>
 <div class="flex-container justify-center">
-    <button class="btn btn-success" routerLink="../form">Make a reservation</button>
+    <button class="btn btn-success make-reservation" routerLink="../form">Make a reservation</button>
 </div>
 
 <div class="list-group" *ngFor="let reservation of room?.reservations; let i=index">
