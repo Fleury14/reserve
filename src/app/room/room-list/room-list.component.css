@@ -10,3 +10,10 @@
 .reservations-no {
     color: #800;
 }
+
+.reservation-index {
+    height: 55px;
+    font-size: 40px;
+    color: #080;
+    min-width: 90px;
+}
