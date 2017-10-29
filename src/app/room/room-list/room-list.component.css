@@ -1,0 +1,12 @@
+.reserve-number {
+    font-size: 72px;
+    font-weight: 600;
+}
+
+.reservations-yes {
+    color: #080;
+}
+
+.reservations-no {
+    color: #800;
+}
