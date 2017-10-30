@@ -6,7 +6,8 @@ import { LoginService } from './../services/login.service';
 
 @Component({
     selector: 'app-landing',
-    templateUrl: './landing.component.html'
+    templateUrl: './landing.component.html',
+    styleUrls: [ './landing.component.css' ]
 })
 
 export class LandingComponent implements OnInit {

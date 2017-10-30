@@ -1,12 +1,20 @@
-<h4>List of Reservations for {{room?.name}}</h4>
-<div class="well">
-    You have {{ room?.reservations?.length || 'no' }} reservations today.
+<h4 class="text-center">Number of reservations for {{room?.name}}:</h4>
+<div class="reserve-number text-center" [ngClass]="{'reservations-yes': room?.reservations?.length > 0, 'reservations-no': !room?.reservations?.length}">
+    {{ room?.reservations?.length || 'None' }}
 </div>
-<button class="btn btn-default" routerLink="../form">Make a reservation</button>
-<div class="list-group" *ngFor="let reservation of room?.reservations">
-    <h4>{{ reservation.reason }}</h4>
-    <h5>{{ reservation.email }}</h5>
-    <p>{{ reservation.startTime }} - {{ reservation.endTime }}</p>
-    <button class="btn btn-danger btn-xs" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
+<div class="flex-container justify-center">
+    <button class="btn btn-success make-reservation" routerLink="../form">Make a reservation</button>
+</div>
+
+<div class="list-group" *ngFor="let reservation of room?.reservations; let i=index">
+    <div class="pull-left reservation-index flex-container justify-center align-center">{{i + 1}}</div>
+    <div>
+        <h4>{{ reservation.reason }}</h4>
+        <h5>{{ reservation.email }}</h5>
+        <p>{{ reservation.startTime }} - {{ reservation.endTime }}</p>
+    </div>
+    <div class="flex-container justify-center">
+            <button class="btn btn-danger btn-xs" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
+    </div>
     <hr>
 </div>

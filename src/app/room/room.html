@@ -1,4 +1,4 @@
-<h1 class="text-center"> {{ thisId }}</h1>
+<!-- <h1 class="text-center"> {{ room?.id }}</h1> -->
 
 <h3 class="text-center" *ngIf="loggedInUser">Welcome, {{loggedInUser.displayName}}</h3>
 <p  class="text-warning" *ngIf="!loggedInUser">You are not logged in. You will not be able to view any rooms without logging in first.</p>
@@ -7,7 +7,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 picture-column flex-container align-center justify-center">
-            <h2 class="text-uppercase room-pic font-start">{{ thisId }}</h2>
+            <img [src]="'../../assets/images/' + room?.picture" alt="Room logo" class="room-img" *ngIf="room?.picture">
+            <h2 class="text-uppercase room-pic font-start" [ngClass]="{
+                'sonic': room?.id === 'sonic',
+                'zelda': room?.id === 'zelda',
+                'halo': room?.id === 'halo',
+                'starfox': room?.id === 'starfox'
+                }">{{ room?.name }}</h2>
         </div>
         <div class="col-sm-6">
             <!-- <app-room-list></app-room-list>

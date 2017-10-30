@@ -1,5 +1,6 @@
 .picture-column {
     height: 525px;
+    flex-direction: column;
 }
 
 .space-divider {
@@ -10,4 +11,29 @@
 
 .room-pic {
     font-size: 36px;
+    color: #fff;
+}
+
+.room-img {
+    color: #fff;
+}
+
+.mario {
+    color: #a00;
+}
+
+.zelda {
+    color: #0a0;
+}
+
+.sonic {
+    color: #009; 
+}
+
+.halo {
+    color: #99d;
+}
+
+.starfox {
+    color: #da0;
 }
