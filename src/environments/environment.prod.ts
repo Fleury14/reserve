@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyDhJPjpVUCmCMvw6DTaTlorDLnE1Enh4Wg',
-    authDomain: 'confdeconflictor.firebaseapp.com',
-    databaseURL: 'https://confdeconflictor.firebaseio.com',
-    projectId: 'confdeconflictor',
-    storageBucket: 'confdeconflictor.appspot.com',
-    messagingSenderId: '519140165558'
+    apiKey: 'AIzaSyCIdCLqxdEzzgYf9bIkcJvPYwWvtvYQfNM',
+    authDomain: 'gw-room-reserve.firebaseapp.com',
+    databaseURL: 'https://gw-room-reserve.firebaseio.com',
+    projectId: 'gw-room-reserve',
+    storageBucket: 'gw-room-reserve.appspot.com',
+    messagingSenderId: '836296556205'
   }
 };
