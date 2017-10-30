@@ -12,6 +12,7 @@ import { RootComponent } from './app-component';
 import { NavComponent } from './nav/nav-component';
 import { AppRoutingModule, routingComponents } from './app.routing.module';
 import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
 // import { RoomFormComponent} from './room/room-form/room-form.component';
 // import { RoomListComponent } from './room/room-list/room-list.component';
 
@@ -20,7 +21,7 @@ import { RoomService } from './services/room.service';
 
 
 @NgModule({
-    declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent],
+    declarations: [ RootComponent, NavComponent, routingComponents, LoginComponent, FooterComponent],
     imports: [ BrowserModule, RoomModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule,
     AngularFireDatabaseModule ],
     providers: [ LoginService, RoomService ],
