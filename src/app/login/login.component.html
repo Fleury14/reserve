@@ -1,8 +1,12 @@
 <ul class="nav navbar-nav navbar-right">
   <li>
+    <div class="photo-container">
+      <img [src]="loggedInUser.pictureURL" alt="" *ngIf="loggedInUser" class="img-responsive">
+    </div>
+  </li>
+  <li>
     <div class="button-box"><span *ngIf="loggedInUser" class="provider">{{ loggedInUser.displayName }}</span></div>
   </li>
-  <li><div *ngIf="loggedInUser" class="button-box"><img src="loggedInUser.pictureURL" alt="" class="img-responsive"></div> </li>
     
   <li class="dropdown" *ngIf="!loggedInUser">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span *ngIf="authProvider">{{ authProvider }}</span><span *ngIf="!authProvider">Provider</span> <span class="caret"></span></a>

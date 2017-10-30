@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
             })
             .subscribe( user => {
                 this.loggedInUser = user;
-                // console.log(this.loggedInUser.displayName);
+                console.log(this.loggedInUser);
             });
     }
 
