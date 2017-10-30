@@ -38,3 +38,10 @@ label {
 .room-form input, .room-form select {
     color: #000;
 }
+
+.room-form-warning {
+
+    background-color: #222;
+    color: #f77;
+    margin: 30px auto;
+}

@@ -39,10 +39,10 @@
     </div>
     <input class="btn btn-info" type="submit" [disabled]="roomForm.invalid">
 </form>
-<div class="alert alert-warning">
+<div class="alert alert-warning room-form-warning">
     <p *ngIf="roomForm.invalid">You have fields that need to be filled out.</p>
     <!-- Remove the following once candeactivate guard has been updated -->
     <p *ngIf="roomForm.dirty">You have changed that have not been saved. Leaving will nullify those changes.</p>
 </div>
 
-{{ roomForm.value | json }}
+<!-- {{ roomForm.value | json }} -->
