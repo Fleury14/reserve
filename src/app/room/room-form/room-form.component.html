@@ -2,7 +2,7 @@
 
 <form #roomForm="ngForm" (ngSubmit)="submittingForm(roomForm.value)" novalidate class="room-form">
     <div class="my-form-item">
-        <label for="reason">Reserve For</label>
+        <label for="reason">Reserve For:</label>
         <select name="reason" #reserveForInput="ngModel" ngModel required>
             <option *ngFor="let value of options" (value)="value">{{ value }}</option>
         </select>
@@ -10,21 +10,21 @@
     </div>
    
     <div class="my-form-item">
-        <label for="email">Contact E-Mail</label>
+        <label for="email">Contact E-Mail:</label>
         <input name="email" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.email?.invalid, valid: roomForm.controls?.email?.valid}">
     </div>
     <div class="my-form-item">
-        <label for="emailConfirmation">Repeat E-mail for confirmation</label>
+        <label for="emailConfirmation">Repeat E-mail for confirmation:</label>
         <input name="emailConfirmation" type="email" placeholder="email" ngModel email [ngClass]="{danger: roomForm.controls?.emailConfirmation?.invalid, valid: roomForm.controls?.emailConfirmation?.valid}">
     </div>
     
    
     <div class="my-form-item">
-        <label for="">Start Time</label>
+        <label for="">Start Time:</label>
         <input type="time" name="startTime" ngModel required>
     </div>
     <div class="my-form-item">
-        <label for="">End Time</label>
+        <label for="">End Time:</label>
         <input type="time" name="endTime" ngModel required>
     </div>
     <!-- <div class="my-form-item">
