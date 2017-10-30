@@ -28,3 +28,8 @@
 .my-menu li:hover {
     color: #000;
 }
+
+.photo-container {
+    width: 30px;
+    height: 30px;
+}
