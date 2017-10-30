@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 })
 
 export class LoginComponent implements OnInit {
-    private authProvider: string;
+    public authProvider: string;
 
     public loggedInUser;
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         console.log('User logged in');
     }
 
-    private logout() {
+    public logout() {
         this.loginService.logout();
         console.log('User logged out');
     }

@@ -49,7 +49,7 @@ export class RoomFormComponent implements OnInit, ICanDeactivate {
     // method for submitting form. it will take in a set of values that will match the IReservation interface
     // because of this, the value names in the HTML MUST MATCH the interface values, otherwise you will run into problems.
     // this can be somewhat averted if we adjusted the data in this method, but its far less clean to do so
-    private submittingForm(reservationValues: IReservation) {
+    public submittingForm(reservationValues: IReservation) {
 
     // use return to call the add reservation from the room service, use .then to navigate away from the form. this is so
     // the user can visibly see their reservation being added.
