@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
+
 import IReservation from './../../../interfaces/reservation.interface';
 import IRoom from '../../../interfaces/room.interface';
 
 import { RoomService } from './../../services/room.service';
+
 
 @Component({
     selector: 'app-room-list',
@@ -17,6 +19,7 @@ export class RoomListComponent implements OnInit {
 
     // declare room that will hold our list. note that its typed to maintain intergrity
     public room: IRoom;
+
 
     // inject necessary services.. router and room. router will be used to get the current room
     // and room will be used to get the contents, and delete when necessary

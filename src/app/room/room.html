@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 picture-column flex-container align-center justify-center">
-            <img [src]="'../../assets/images/' + room?.picture" alt="Room logo" class="room-img" *ngIf="room?.picture">
+            <img [src]="'../../assets/images/' + room?.picture" alt="Room logo" class="room-img" *ngIf="room?.picture" [@onLoad]="state">
             <h2 class="text-uppercase room-pic font-start" [ngClass]="{
                 'sonic': room?.id === 'sonic',
                 'zelda': room?.id === 'zelda',
