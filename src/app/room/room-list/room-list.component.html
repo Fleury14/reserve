@@ -7,14 +7,16 @@
 </div>
 
 <div class="list-group" *ngFor="let reservation of room?.reservations; let i=index">
-    <div class="pull-left reservation-index flex-container justify-center align-center">{{i + 1}}</div>
-    <div>
-        <h4>{{ reservation.reason }}</h4>
-        <h5>{{ reservation.email }}</h5>
-        <p>{{ reservation.startTime }} - {{ reservation.endTime }}</p>
+    <div [@onLoad]="reservation.isTaDaTime ? 'complete' : 'init'">
+        <div class="pull-left reservation-index flex-container justify-center align-center">{{i + 1}}</div>
+        <div>
+            <h4>{{ reservation.reason }}</h4>
+            <h5>{{ reservation.email }}</h5>
+            <p>{{ reservation.startTime }} - {{ reservation.endTime }}</p>
+        </div>
+        <div class="flex-container justify-center">
+                <button class="btn btn-danger btn-xs" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
+        </div>
+        <hr>
     </div>
-    <div class="flex-container justify-center">
-            <button class="btn btn-danger btn-xs" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
-    </div>
-    <hr>
 </div>
