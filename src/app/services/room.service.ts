@@ -30,6 +30,7 @@ export class RoomService {
     public getRoomById(passedId): Observable<IRoom> {
         return this.roomsObservable.map((rooms: IRoom[]) => rooms.find(room => room.id === passedId))
         .map((room: IRoom) => {
+            // console.log(room);
             // the above begins the observable return by mapping the data from the whole blob of rooms into
             // just the one room with the .find command (neato). the second map will then map THAT object and below we will for/in
             // it and push it to an array
@@ -39,6 +40,7 @@ export class RoomService {
             // with the for..in to make the structure of the array a little nicer. we grab each key, use bracket notation to get everything
             // in that key. put that key inside the reservation we just made, and put it into the array.
             for (let reservationKey in room.reservations) {
+                // console.log(reservationKey);
                 const reservation = room.reservations[reservationKey];
                 reservation.id = reservationKey;
                 reservations.push(reservation);

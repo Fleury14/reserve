@@ -22,7 +22,7 @@ const animations = [
             transform: 'translateX(0)',
             opacity: 1
         })),
-        transition('init => complete', animate('150ms ease-out'))
+        transition('init => complete', animate('1500ms ease-out'))
     ])
 ];
 
@@ -69,7 +69,7 @@ export class RoomListComponent implements OnInit {
             room.reservations.forEach((reservation, index) => {
                 setTimeout(() => {
                     reservation.isTaDaTime = true;
-                }, 100 * index);
+                }, 200 * index);
             });
             return room;
         })
